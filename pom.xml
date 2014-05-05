@@ -14,7 +14,7 @@
 
   <name>Build Flow HTTP Extension</name>
   <description>Provides the ability to do HTTP get requests in BuildFlow DSL.</description>
-  <url></url>
+  <url>https://github.com/jniesen/build-flow-http-extension-plugin</url>
   <inceptionYear>2014</inceptionYear>
 
   <developers>
