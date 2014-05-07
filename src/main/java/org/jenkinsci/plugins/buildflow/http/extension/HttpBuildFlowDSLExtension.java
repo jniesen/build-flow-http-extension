@@ -2,6 +2,7 @@ package org.jenkinsci.plugins.buildflow.http.extension;
 
 import com.cloudbees.plugins.flow.BuildFlowDSLExtension;
 import com.cloudbees.plugins.flow.FlowDelegate;
+import groovyx.net.http.HTTPBuilder;
 import hudson.Extension;
 
 /**
@@ -15,10 +16,18 @@ public class HttpBuildFlowDSLExtension extends BuildFlowDSLExtension {
 
     @Override
     public Object createExtension(String extensionName, FlowDelegate flowDelegate) {
-        if(EXTENSION_NAME.equals(extensionName)) {
-            return new HttpBuildFlowDSL(flowDelegate);
-        }
+      if (extensionName == this.EXTENSION_NAME) {
+        return getHttpBuildFlowDSL(flowDelegate);
+      }
 
-        return null;
+      return null;
+    }
+
+    public HttpBuildFlowDSL getHttpBuildFlowDSL(FlowDelegate flowDelegate) {
+      return new HttpBuildFlowDSL(flowDelegate, getHttpBuilder());
+    }
+
+    public HTTPBuilder getHttpBuilder() {
+      return new HTTPBuilder();
     }
 }

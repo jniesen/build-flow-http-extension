@@ -9,19 +9,19 @@ import static groovyx.net.http.ContentType.TEXT
  * Created by jniesen on 5/5/14.
  */
 class HttpBuildFlowDSL {
-    def FlowDelegate flowDelegate;
-    def http = new HTTPBuilder();
+  FlowDelegate flowDelegate
+  HTTPBuilder http
 
-    def HttpBuildFlowDSL(FlowDelegate flowDelegate) {
-        this.flowDelegate = flowDelegate;
-    }
+  def HttpBuildFlowDSL(FlowDelegate flowDelegate, HTTPBuilder httpBuilder) {
+    this.flowDelegate = flowDelegate
+    this.http = httpBuilder
+  }
 
-    def get(url) {
-      def getter = new HTTPBuilder()
-      getter.request(url, GET, TEXT) { req ->
-        response.success = { resp, reader ->
-          return reader.text;
-        }
+  def get(url) {
+    this.http.request(url, GET, TEXT) { req ->
+      response.success = { resp, reader ->
+        return reader.text
       }
     }
+  }
 }
