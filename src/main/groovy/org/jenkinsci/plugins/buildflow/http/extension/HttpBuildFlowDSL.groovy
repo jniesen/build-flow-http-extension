@@ -19,6 +19,7 @@ class HttpBuildFlowDSL {
 
   def get(url) {
     this.http.request(url, GET, TEXT) { req ->
+      headers.Accept = "application/json"
       response.success = { resp, reader ->
         return reader.text
       }
