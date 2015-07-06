@@ -9,7 +9,7 @@
 
   <groupId>org.jenkins-ci.plugins</groupId>
   <artifactId>build-flow-http-extension</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.3</version>
   <packaging>hpi</packaging>
 
   <name>Build Flow HTTP Extension</name>
