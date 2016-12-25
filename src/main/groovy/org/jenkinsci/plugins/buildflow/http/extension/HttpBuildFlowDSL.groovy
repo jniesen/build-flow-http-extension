@@ -46,6 +46,18 @@ class HttpBuildFlowDSL {
     this.flowDelegate = flowDelegate
     this.http = httpBuilder
   }
+  
+  def getWithAuthBasic(url, user, password) {
+      def httpClient = new PreemptiveHttpClient(user, password, 5000)
+      httpClient.ignoreSSLIssues()
+      def httpResponse = httpClient.execute(new HttpGet(url))
+
+      if (httpResponse.statusLine.statusCode == 200){
+          return IOUtils.toString(httpResponse.getEntity().content)
+      } else {
+          return IOUtils.toString(httpResponse.getEntity().content)
+      }
+  }
 
   def get(url) {
     this.http.request(url, GET, TEXT) { req ->
