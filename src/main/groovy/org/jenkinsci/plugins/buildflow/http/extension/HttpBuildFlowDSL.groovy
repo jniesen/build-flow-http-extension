@@ -15,6 +15,7 @@ import static groovyx.net.http.ContentType.XML
 import static groovyx.net.http.ContentType.HTML
 import static groovyx.net.http.ContentType.URLENC
 import static groovyx.net.http.ContentType.BINARY
+import org.apache.http.client.methods.HttpGet
 
 /**
  * Created by jniesen on 5/5/14.
