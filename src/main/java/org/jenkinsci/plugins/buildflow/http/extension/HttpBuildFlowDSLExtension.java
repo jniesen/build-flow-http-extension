@@ -16,7 +16,7 @@ public class HttpBuildFlowDSLExtension extends BuildFlowDSLExtension {
 
     @Override
     public Object createExtension(String extensionName, FlowDelegate flowDelegate) {
-      if (extensionName == this.EXTENSION_NAME) {
+      if (extensionName.equals(this.EXTENSION_NAME)) {
         return getHttpBuildFlowDSL(flowDelegate);
       }
 
