@@ -1,5 +1,7 @@
 # Build Flow HTTP Extension
 
+[![Build Status](https://travis-ci.org/jniesen/build-flow-http-extension.svg?branch=master)](https://travis-ci.org/jniesen/build-flow-http-extension)
+
 A Jenkins plugin that extends to BuildFlow DSL. It gives you the ability to make HTTP get requests from your build script.
 
 ```groovy
