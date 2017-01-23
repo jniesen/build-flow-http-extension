@@ -51,9 +51,14 @@ public class PreemptiveHttpClient {
         if (is != null) {
             try {
                 properties.load(is);
-                is.close();
             } catch (IOException e) {
                 // ignore, use the default value
+            } finally {
+                try {
+                    is.close();
+                } catch (IOException e) {
+                  // ignore
+                }
             }
         }
         CLIENT_VERSION = properties.getProperty("client.version", "unknown");
