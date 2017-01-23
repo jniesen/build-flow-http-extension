@@ -15,6 +15,7 @@ import static groovyx.net.http.ContentType.XML
 import static groovyx.net.http.ContentType.HTML
 import static groovyx.net.http.ContentType.URLENC
 import static groovyx.net.http.ContentType.BINARY
+import org.apache.http.client.methods.HttpGet
 
 /**
  * Created by jniesen on 5/5/14.
@@ -45,6 +46,18 @@ class HttpBuildFlowDSL {
   def HttpBuildFlowDSL(FlowDelegate flowDelegate, HTTPBuilder httpBuilder) {
     this.flowDelegate = flowDelegate
     this.http = httpBuilder
+  }
+  
+  def getWithAuthBasic(url, user, password) {
+      def httpClient = new PreemptiveHttpClient(user, password, 5000)
+      httpClient.ignoreSSLIssues()
+      def httpResponse = httpClient.execute(new HttpGet(url))
+
+      if (httpResponse.statusLine.statusCode == 200){
+          return IOUtils.toString(httpResponse.getEntity().content)
+      } else {
+          return IOUtils.toString(httpResponse.getEntity().content)
+      }
   }
 
   def get(url) {
