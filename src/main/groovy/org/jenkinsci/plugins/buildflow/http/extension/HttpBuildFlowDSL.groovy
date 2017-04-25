@@ -64,7 +64,7 @@ class HttpBuildFlowDSL {
     this.http.request(url, GET, TEXT) { req ->
       headers.Accept = "application/json"
       response.success = { resp, reader ->
-        return reader.text
+        return reader?.text
       }
     }
   }
